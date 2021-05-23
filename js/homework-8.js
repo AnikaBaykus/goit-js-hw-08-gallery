@@ -17,20 +17,19 @@ overlayEl.addEventListener('click', onOverlayCloseModalClick);
 function createImagesGallery(images) {
     return images.map(({ preview, original, description }) => {
         return `
-    <li class="gallery__item">
-        <a class="gallery__link"
-            href="${original}"
-        >
-            <img
-                class="gallery__image"
-                src="${preview}"
-                data-source="${original}"
-                alt="${description}"
-            />
-        </a>
-    </li>`
-    }).join('');
-    
+                <li class="gallery__item">
+                    <a class="gallery__link"
+                        href="${original}"
+                    >
+                        <img
+                            class="gallery__image"
+                            src="${preview}"
+                            data-source="${original}"
+                            alt="${description}"
+                        />
+                    </a>
+                </li>`
+    }).join('');   
 }
 
 //2.Реализация делегирования на галерее ul.js-gallery и получение url большого изображения.
@@ -81,14 +80,9 @@ function onEscCloseModalClick(event) {
 
 // Пролистывание изображений галереи в открытом модальном окне клавишами "влево" и "вправо".
 function onFlippingImageClick(event) {
-    let currentIndexImageEl = images.map(image => image.description).findIndex(alt => alt === openImageInModalEl.alt); 
-    console.log(currentIndexImageEl);
-    
+    let currentIndexImageEl = images.map(image => image.description).findIndex(alt => alt === openImageInModalEl.alt);
     const lengthGalleryEl = images.length-1;
-    console.log(lengthGalleryEl);
-
-    console.log(event.code);
-
+    
     if (event.code === 'ArrowRight') {
     
         if (currentIndexImageEl < lengthGalleryEl) {
